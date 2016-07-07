@@ -56,7 +56,7 @@ public class Worker {
 
     @Override
     public String toString() {
-        return this.id.toString() + " - " + this.firstName + " - " + this.lastName + " - " + this.profession.toString() + " - ";
+        return this.id.toString() + " - " + this.firstName + " - " + this.lastName + " - " + this.profession.toString() + " - " + this.getAge();
     }
 
 }

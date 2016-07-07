@@ -12,21 +12,24 @@ import java.util.function.Consumer;
 
 public class LambdaServiceImplTest {
 
-    public static Consumer<Worker> CONSUMER_CONSOLE = null;
-    public static Consumer<Worker> CONSUMER_CONSOLE_ALL_INFO = null;
+    public static Consumer<Worker> CONSUMER_CONSOLE = w -> System.out.println(w.getFirstName() + " " + w.getLastName());
+    public static Consumer<Worker> CONSUMER_CONSOLE_ALL_INFO = w -> System.out.println(w);
 
-    public static Transform<String> TO_UPPER_CASE = null;
-    public static Transform<String> STR_DOUBLE = null;
-    public static Transform<String> STR_DOUBLE_UPPER = null;
+    public static Transform<String> TO_UPPER_CASE = str -> str.toUpperCase();
+    public static Transform<String> STR_DOUBLE = str -> str + str;
+    public static Transform<String> STR_DOUBLE_UPPER = str -> {
+        String upper = str.toUpperCase();
+        return upper + upper;
+    };
 
-    public static Comparator<String> COMPARE_STRINGS = null;
-    public static Comparator<Worker> COMPARE_WORKERS_BY_ID = null;
-    public static Comparator<Worker> COMPARE_WORKERS_BY_FIRST_NAME = null;
-    public static Comparator<Worker> COMPARE_WORKERS_BY_AGE = null;
+    public static Comparator<String> COMPARE_STRINGS = (str1, str2) -> str1.compareTo(str2);
+    public static Comparator<Worker> COMPARE_WORKERS_BY_ID = (w1, w2) -> w1.getId().compareTo(w2.getId());
+    public static Comparator<Worker> COMPARE_WORKERS_BY_FIRST_NAME = (w1, w2) -> w1.getFirstName().compareTo(w2.getFirstName());
+    public static Comparator<Worker> COMPARE_WORKERS_BY_AGE = (w1, w2) -> w1.getAge().compareTo(w2.getAge());
 
-    public static BiFunction<Float, Float, Float> ADDITION = null;
-    public static BiFunction<Float, Float, Float> DEDUCTION = null;
-    public static BiFunction<Float, Float, Float> MULTIPLICATION = null;
+    public static BiFunction<Float, Float, Float> ADDITION = (x1, x2) -> x1 + x2;
+    public static BiFunction<Float, Float, Float> DEDUCTION = (x1, x2) -> x1 - x2;
+    public static BiFunction<Float, Float, Float> MULTIPLICATION = (x1, x2) -> x1 * x2;
 
 
     @Test
