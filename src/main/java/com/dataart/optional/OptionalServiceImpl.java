@@ -11,8 +11,8 @@ import java.util.function.Predicate;
 
 public class OptionalServiceImpl {
 
-    private static String SC_DEFAULT_VER = "CH External";
-    private static String SC_DEFAULT_INFO = "NONE";
+    private static final String SC_DEFAULT_VER = "CH External";
+    private static final String SC_DEFAULT_INFO = "NONE";
 
     public static void printIfPresent(Optional<Worker> worker) {
         worker.ifPresent(w -> System.out.println(w.getProfession()));
