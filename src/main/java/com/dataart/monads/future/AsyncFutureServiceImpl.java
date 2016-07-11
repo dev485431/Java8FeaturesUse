@@ -12,7 +12,7 @@ public class AsyncFutureServiceImpl {
 
 
     public static CompletableFuture<Integer> handleString(CompletableFuture<String> future) {
-        return future.thenApply(Integer::parseInt);
+        return future.thenApply(Integer::parseInt).thenApply(number -> number * 2);
     }
 
     public static Integer handleException(CompletableFuture<String> future) throws ExecutionException, InterruptedException {
