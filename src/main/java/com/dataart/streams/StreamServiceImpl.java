@@ -55,15 +55,12 @@ public class StreamServiceImpl {
 
     public static List<Worker> searchWorkers(List<Company> companies, Profession profession) {
         return companies.stream()
-                .map(Company::getWorkers) // Optional<List<Worker>>
+                .map(Company::getWorkers)
                 .filter(o -> o.isPresent())
-                .map(o -> o.get()) // List<Worker>
-                .map()
-
-//                .flatMap(o -> Stream.of(o.get()))
-//                .forEach(w -> w.);
-
-
+                .map(o -> o.get())
+                .flatMap(List::stream)
+                .filter(w -> w.getProfession().equals(profession))
+                .collect(Collectors.toList());
     }
 
 }
