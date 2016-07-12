@@ -11,7 +11,7 @@ public class MonadLaws {
     private static Function<Integer, Optional<Integer>> optionalOf = i -> Optional.of(i);
 
     private static Function<Integer, Optional<Integer>> g = i -> Optional.of(i * 5);
-    private static Function<Integer, Optional<Integer>> function_flatMap_g = i -> Optional.of(i * 5 * 2);
+    private static Function<Integer, Optional<Integer>> function_flatMap_g = i -> Optional.of(i * 10);
 
     /**
      * Law 1, Left Identity
