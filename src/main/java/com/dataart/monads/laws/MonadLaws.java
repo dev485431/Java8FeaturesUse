@@ -7,11 +7,11 @@ public class MonadLaws {
 
     private static final Integer value = 42;
     private static Optional<Integer> monadicValue = Optional.of(value);
-    private static Function<Integer, Optional<Integer>> function = null;
-    private static Function<Integer, Optional<Integer>> optionalOf = null;
+    private static Function<Integer, Optional<Integer>> function = i -> Optional.of(i * 2);
+    private static Function<Integer, Optional<Integer>> optionalOf = i -> Optional.of(i);
 
-    private static Function<Integer, Optional<Integer>> g = null;
-    private static Function<Integer, Optional<Integer>> function_flatMap_g = null;
+    private static Function<Integer, Optional<Integer>> g = i -> Optional.of(i * 5);
+    private static Function<Integer, Optional<Integer>> function_flatMap_g = i -> Optional.of(i * 5 * 2);
 
     /**
      * Law 1, Left Identity

@@ -7,6 +7,7 @@ import com.dataart.core.data.Worker;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 public class AsyncFutureServiceImpl {
 
@@ -20,7 +21,8 @@ public class AsyncFutureServiceImpl {
     }
 
     public static CompletableFuture<List<Worker>> handleFutures(CompletableFuture<Company> companyCompletableFuture, CompletableFuture<Profession> professionCompletableFuture) throws ExecutionException, InterruptedException {
-        return null;
+        CompletableFuture<List<Worker>> results = companyCompletableFuture.thenCombine(professionCompletableFuture, (company, profession) -> company.getWorkers().get().stream().filter(w -> w.getProfession().equals(profession)).collect(Collectors.toList()));
+        return results;
     }
 
 }
